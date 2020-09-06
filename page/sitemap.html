@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>站点地图 - 丁铭晖个人博客</title>
+    <link rel="stylesheet" href="./css/sitemap.css" />
+    <script src="./JS/vue.js"></script>
+  </head>
+  <body>
+    <h2>我的个人博客's SiteMap</h2>
+    <div class="nav">
+      <a href="/"><strong>我的个人博客</strong></a>
+      »
+      <a href="">站点地图</a>
+    </div>
+    <div class="content" id="blogs">
+      <h3>最新文章</h3>
+      <ul>
+        <li v-for="(blog,index) in blogList" :key="index">
+          <a @click="jumpTo(blog.id)">{{ blog.title }}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="content" id="category">
+      <div class="categories">
+        分类目录
+        <ul>
+          <li v-for="(tag,index) in tagList">
+            <a :href="'/?tagId=' + tag.id">{{ tag.tag }}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="page-nav">
+        页面
+        <ul>
+          <li><a href="#top">归档</a></li>
+          <li><a href="/">搜索引擎提交入口</a></li>
+          <li><a href="/about.html">关于</a></li>
+          <li><a href="/message.html">留言</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      查看博客首页:
+      <strong><a href="/">我的个人博客</a></strong>
+    </div>
+    <script src="./JS/axios.min.js"></script>
+    <script src="./JS/sitemap.js"></script>
+  </body>
+</html>

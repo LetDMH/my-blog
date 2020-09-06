@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>丁铭晖个人博客 | 技术博客</title>
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <script src="./JS/vue.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <a href="/" class="title">丁铭晖个人博客 | 技术博客</a>
+        <ul class="menu">
+          <li><a href="/">首页</a></li>
+          <li><a href="/sitemap.html">地图</a></li>
+          <li><a href="/about.html">关于</a></li>
+          <li><a href="/message.html">留言</a></li>
+        </ul>
+        <div class="search-bar" id="search">
+          <input type="text" placeholder="输入关键词查找"  v-model="search"/>
+          <button @click='sendSearch'>搜索</button>
+        </div>
+      </div>
+    </header>
+    <div class="content">
+      <div class="content-left">
+        <div class="every-day" id="every_day">
+          <span class="header-tips"
+            >每日一句 ( {{ dateTime }} ) &nbsp;
+            <span class="glyphicon"></span>
+          </span>
+          <p>{{ english }}</p>
+          <p>
+            {{ chinese }}
+            <span class="pull-right">{{ author }}</span>
+          </p>
+        </div>
+        <div class="article-list" id="article_list">
+          <div class="article" v-for="(article,index) in updateData" :key="index">
+            <div class="article-body">
+              <h2>
+                <a :href="'/blogDetail.html?id=' + article.id" 
+                class="article-title"
+                @click="addViews(article.id)"
+                  >{{ article.title }}</a
+                >
+              </h2>
+              <p>{{ article.content }}</p>
+            </div>
+            <div class="article-footer">
+              发布于{{ article.ctime }} | 浏览：{{ article.views }} | Tags：{{
+              article.tags }}
+            </div>
+          </div>
+        </div>
+        <div class="pagination" id="pagination">
+          <ul>
+            <li v-for="(page,index) in pageList" :key="index">
+              <span href="" @click="changePage(page.pageNum)" :class="{active:page.text === now}">{{ page.text }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="content-right">
+        <div class="panel" id="tags-cloud">
+          <div class="panel-header">随机标签云</div>
+          <div class="panel-body">
+            <a
+              :href="'/?tagId=' + tag.id"
+              v-for="(tag,index) in tags"
+              :key="index"
+              :style="{color: randomColor(),fontSize: randomSize()}"
+              class="a-cloud"
+              >{{ tag.tag }}&nbsp;</a
+            >
+          </div>
+        </div>
+        <div class="panel" id="popular-news">
+          <div class="panel-header">最新热门</div>
+          <ul class="list-group">
+            <li class="list-group-item" v-for="(news,index) in allNews">
+              <a :href="news.url">{{ news.title }}</a>
+            </li>
+          </ul>
+        </div>
+        <div class="panel" id="latest-comments">
+          <div class="panel-header">最新评论</div>
+          <ul class="list-group">
+            <li
+              class="list-group-item comments"
+              v-for="(comment,index) in commentsList"
+              :key="index"
+            >
+              <div class="list-group-item-header">
+                <span class="comment-author">{{ comment.user_name }}</span>
+                <span class="pull-right">[{{ comment.ctime }}]</span>
+              </div>
+              <div class="list-group-item-header-text">
+                <template v-if="comment.blog_id == -1">
+                  <a href="/about.html">{{ comment.comment }}</a>
+                </template>
+                <template v-else-if="comment.blog_id == -2">
+                  <a href="/message.html">{{ comment.comment }}</a>
+                </template>
+                <template v-else>
+                  <a :href="'/blogDetail.html?id=' + comment.blog_id">{{ comment.comment }}</a>
+                </template>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="panel">
+          <div class="panel-header">友情链接</div>
+          <table class="table">
+            <tbody>
+              <tr class="list-group-item">
+                <td><a href="http://www.yuanjin.tech/">袁进的个人博客</a></td>
+                <td><a href="https://winter1141151662.github.io/">cjy个人博客</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <footer class="footer" id="footer">
+      <ul class="list">
+        <li class="list-item" v-for="(tag,index) in tags" :key="index">
+          <a :href="'/?tagId=' + tag.id">{{ tag.tag }}</a>
+        </li>
+      </ul>
+      <p>
+        Copyright © 2020-2020
+        <a href="/">丁铭晖个人博客</a>
+        <!-- <a href="" target="_blank">站长统计</a> -->
+      </p>
+    </footer>
+    <script src="./JS/axios.min.js"></script>
+    <script src="./JS/index.js"></script>
+    <script src="./JS/base.js"></script>
+  </body>
+</html>

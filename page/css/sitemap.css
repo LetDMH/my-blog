@@ -1,0 +1,39 @@
+body {
+  font-family: Verdana;
+  font-size: 12px;
+  margin: 0;
+  background: #ffffff;
+}
+h2 {
+  text-align: center;
+  margin-top: 20px;
+}
+.nav,
+.content,
+.footer {
+  padding: 8px;
+  border: 1px solid #eeeeee;
+  clear: both;
+  width: 95%;
+  margin: auto;
+  margin-top: 10px;
+}
+.nav a {
+  color: #000;
+}
+.content ul li {
+  margin-top: 8px;
+}
+.content ul li a {
+  color: #000;
+}
+.footer a {
+  color: #000;
+}
+.footer{
+  margin-bottom: 50px;
+}
+a{
+  text-decoration: underline;
+  cursor: pointer;
+}

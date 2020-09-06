@@ -1,0 +1,32 @@
+{
+  "name": "my-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -x npm run server",
+    "server": "node --inspect index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LetDMH/my-blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LetDMH/my-blog/issues"
+  },
+  "homepage": "https://github.com/LetDMH/my-blog#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "log4js": "^6.3.0",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.3.4",
+    "svg-captcha": "^1.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Editor</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      .wrapper {
+        position: relative;
+        display: block;
+        width: 1000px;
+        margin: 0px auto 0px auto;
+      }
+      h1 {
+        margin: 20px 0px 20px 0px;
+      }
+      input {
+        width: 200px;
+        height: 30px;
+        font-size: 20px;
+        padding: 3px 10px 3px 10px;
+        border-radius: 5px;
+        margin: 0px 0px 20px 0px;
+      }
+      button {
+        position: relative;
+        display: block;
+        height: 50px;
+        width: 200px;
+        line-height: 50px;
+        text-align: center;
+        background: #1e88e5;
+        color: white;
+        font-size: 24px;
+        border-radius: 8px;
+        margin: 20px auto 0px auto;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>编辑每日一句</h1>
+      <div id="editor"></div>
+      <button onclick="submit()">提交</button>
+    </div>
+    <script src="./wangEditor-3.1.1/release/wangEditor.min.js"></script>
+    <script src="./JS/axios.min.js"></script>
+    <script>
+      var E = window.wangEditor;
+      var editor = new E('#editor');
+      editor.customConfig.uploadImgShowBase64 = true
+      editor.create();
+      var eds = document.getElementsByClassName('w-e-text-container');
+      eds[0].style = eds[0].style.cssText + 'height: 500px';
+      function submit() {
+        var content = encodeURI(editor.txt.text());
+        axios({
+          method: 'post',
+          url: '/blog/addEveryDay',
+          data: {
+            content
+          }
+        }).then((res) => {
+          console.log(res.data);
+          alert(res.data.msg);
+        });
+      }
+    </script>
+  </body>
+</html>
