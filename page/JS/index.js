@@ -101,7 +101,10 @@ var pagination = new Vue({
       var totalPage = Math.floor((this.total + this.limit - 1) / this.limit);
       // var totalPage = Math.ceil(this.total / this.limit);
       this.pageList = [];
-      this.pageList.push({ text: '上一页', pageNum: 1 });
+      this.pageList.push({
+        text: '上一页',
+        pageNum: this.now > 1 ? this.now - 1 : 1
+      });
       if (this.now - 2 > 0) {
         this.pageList.push({
           text: this.now - 2,
@@ -127,7 +130,10 @@ var pagination = new Vue({
           pageNum: this.now + 2
         });
       }
-      this.pageList.push({ text: '下一页', pageNum: totalPage });
+      this.pageList.push({
+        text: '下一页',
+        pageNum: this.now < totalPage ? this.now + 1 : totalPage
+      });
     }
   },
   computed: {
