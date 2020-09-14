@@ -127,10 +127,10 @@ body {
   outline: none;
   cursor: pointer;
 }
-.search-bar button:hover{
+.search-bar button:hover {
   background-color: #e6e6e6;
 }
-.search-bar button:focus{
+.search-bar button:focus {
   outline: -webkit-focus-ring-color auto 5px;
   outline-offset: -2px;
 }
@@ -234,7 +234,9 @@ tbody tr:first-of-type td {
 }
 .footer .list {
   display: flex;
+  white-space: nowrap;
   justify-content: space-around;
+  flex-wrap: wrap;
   margin-bottom: 10px;
 }
 .footer .list .list-item {
@@ -276,4 +278,33 @@ tbody tr:first-of-type td {
 .content-left .pagination ul span.active {
   background-color: #1f1f1f;
   color: #fff;
+}
+@media all and (min-width: 0) and (max-width: 768px) {
+  .content-left,.content-right {
+    width: 100%;
+  }
+}
+@media all and (min-width: 768px) and (max-width: 992px) {
+  .container,
+  .content {
+    width: 750px;
+  }
+  .content-left,.content-right,.footer {
+    width: 100%;
+  }  
+  .search-bar {
+    display: none;
+  }
+}
+@media all and (min-width: 992px) and (max-width: 1200px) {
+  .container,
+  .content {
+    width: 970px;
+  }
+}
+@media all and (min-width: 1200px) {
+  .container,
+  .content {
+    width: 1170px;
+  }
 }
