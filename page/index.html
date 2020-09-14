@@ -81,7 +81,7 @@
           <div class="panel-header">最新热门</div>
           <ul class="list-group">
             <li class="list-group-item" v-for="(news,index) in allNews">
-              <a :href="news.url">{{ news.title }}</a>
+              <a :href="'/blogDetail.html?id=' + news.id">{{ news.title }}</a>
             </li>
           </ul>
         </div>

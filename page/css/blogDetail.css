@@ -13,3 +13,6 @@
 .blogDetail .text img{
   width: 80%;
 }
+a{
+  cursor: pointer;
+}

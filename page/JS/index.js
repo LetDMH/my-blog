@@ -71,7 +71,6 @@ var articleList = new Vue({
                 offset: 0
               }
             }).then((res) => {
-              console.log(res.data.data);
               this.dataList = res.data.data.map((item) => {
                 item.ctime = timeFormat(item.ctime);
                 item.content = item.content.replace(/<img[\w\W]*>/g, '');

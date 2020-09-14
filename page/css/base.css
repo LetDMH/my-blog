@@ -205,6 +205,12 @@ body {
   display: block;
   clear: both;
 }
+#popular-news a{
+  color: #eee;
+}
+#popular-news a:hover{
+  color:  #337ab7;
+}
 .panel .list-group-item .list-group-item-header-text a {
   color: #777;
 }
