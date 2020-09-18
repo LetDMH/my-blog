@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 const { sqlLogger } = require('../logger');
-const sequelize = new Sequelize('my-blog', 'root', 'edisonchen', {
+const sequelize = new Sequelize('blog', 'root', 'edisonchen', {
   host: 'localhost',
   dialect: 'mysql',
   logging: (msg) => {

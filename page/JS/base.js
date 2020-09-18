@@ -52,7 +52,7 @@ var popularNews = new Vue({
       }
     }).then((res) => {
       this.allNews = res.data.data;
-      console.log(this.allNews)
+      // console.log(this.allNews)
     });
   }
 });
